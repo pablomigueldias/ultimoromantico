@@ -1,0 +1,208 @@
+:root {
+  --timer-bg: #ffeaf3;
+  --timer-bg-strong: #ffd4e7;
+  --timer-border: rgba(255, 143, 178, 0.35);
+  --timer-shadow: 0 14px 35px rgba(209, 31, 107, 0.2);
+  --timer-number: #c2185b;
+  --timer-label: #7a375b;
+}
+
+/* CONTAINER GERAL */
+
+.timer {
+  margin: 1.8rem 0 2.2rem;
+  padding: 1.4rem 1.1rem;
+  border-radius: 22px;
+  background: radial-gradient(circle at top, #ffe2f0 0%, #ffffff 55%, #ffeef6 100%);
+  border: 1px solid var(--timer-border);
+  box-shadow: var(--timer-shadow);
+  text-align: center;
+}
+
+/* TÍTULO E SUBTÍTULO */
+
+.timer h2 {
+  font-size: 1.35rem;
+  font-weight: 700;
+  margin-bottom: 0.25rem;
+  background: linear-gradient(90deg, #c2185b, #ff6fa4);
+  -webkit-background-clip: text;
+  color: transparent;
+  letter-spacing: 0.04em;
+}
+
+.timer-subtitulo {
+  font-size: 0.9rem;
+  color: #6a5a5a;
+  margin-bottom: 1.5rem;
+  max-width: 320px;
+  margin-inline: auto;
+  opacity: 0.92;
+}
+
+/* GRIDS – MOBILE FIRST */
+
+.timer-grid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 0.85rem;
+}
+
+/* Primeira linha: anos / meses / dias com um pouco mais de peso */
+.anos-grid {
+  margin-bottom: 1.4rem;
+}
+
+/* CARDS */
+
+.timer-box {
+  background: var(--timer-bg);
+  border-radius: 16px;
+  padding: 0.95rem 0.5rem;
+  box-shadow: 0 8px 20px rgba(209, 31, 107, 0.18);
+  border: 1px solid var(--timer-border);
+
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+
+  min-height: 70px;
+}
+
+/* Destaque sutil para anos/meses/dias */
+.anos-grid .timer-box {
+  background: var(--timer-bg-strong);
+}
+
+/* VALORES */
+
+.timer-valor {
+  font-size: 1.45rem;
+  font-weight: 700;
+  color: var(--timer-number);
+  line-height: 1;
+}
+
+/* um pouquinho maior na primeira linha */
+.anos-grid .timer-valor {
+  font-size: 1.6rem;
+}
+
+/* LABELS */
+
+.timer-label {
+  margin-top: 0.25rem;
+  font-size: 0.68rem;
+  font-weight: 600;
+  color: var(--timer-label);
+  text-transform: uppercase;
+  letter-spacing: 0.12em;
+  opacity: 0.95;
+}
+
+/* ANIMAÇÃO SUAVE DE ENTRADA */
+
+.timer-box {
+  opacity: 0;
+  transform: translateY(6px);
+  animation: timerFadeUp 0.45s ease forwards;
+}
+
+.timer-box:nth-child(2) {
+  animation-delay: 0.05s;
+}
+.timer-box:nth-child(3) {
+  animation-delay: 0.1s;
+}
+
+@keyframes timerFadeUp {
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+/* HOVER SÓ EM TELAS MAIORES (pra não incomodar no mobile) */
+@media (hover: hover) and (pointer: fine) {
+  .timer-box:hover {
+    transform: translateY(-3px);
+    box-shadow: 0 12px 26px rgba(209, 31, 107, 0.25);
+    background: linear-gradient(145deg, #ffe3f1, #fff3f9);
+  }
+}
+
+/* AJUSTES PARA TELAS MUITO PEQUENAS */
+
+@media (max-width: 360px) {
+  .timer {
+    padding: 1.2rem 0.8rem;
+  }
+
+  .timer-box {
+    min-height: 64px;
+    padding: 0.8rem 0.4rem;
+  }
+
+  .timer-valor {
+    font-size: 1.3rem;
+  }
+
+  .anos-grid .timer-valor {
+    font-size: 1.45rem;
+  }
+
+  .timer-label {
+    font-size: 0.62rem;
+  }
+}
+
+/* TELAS MÉDIAS (celular grande / tablet em pé) */
+
+@media (min-width: 600px) {
+  .timer {
+    padding: 1.6rem 1.4rem;
+  }
+
+  .timer-grid {
+    gap: 1rem;
+  }
+
+  .timer-box {
+    min-height: 80px;
+  }
+
+  .timer-valor {
+    font-size: 1.6rem;
+  }
+
+  .anos-grid .timer-valor {
+    font-size: 1.85rem;
+  }
+}
+
+/* DESKTOP */
+
+@media (min-width: 900px) {
+  .timer {
+    max-width: 520px;
+    margin-inline: auto;
+  }
+
+  .timer-box {
+    min-height: 90px;
+    padding: 1.1rem 0.6rem;
+  }
+
+  .timer-valor {
+    font-size: 1.7rem;
+  }
+
+  .anos-grid .timer-valor {
+    font-size: 2rem;
+  }
+
+  .timer-label {
+    font-size: 0.72rem;
+  }
+}

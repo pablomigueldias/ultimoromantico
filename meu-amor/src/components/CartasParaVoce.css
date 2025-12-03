@@ -1,0 +1,571 @@
+.cartas-section {
+  max-width: 1100px;
+  margin: 3rem auto;
+  padding: 2rem 1.5rem;
+  text-align: center;
+}
+
+.cartas-header h2 {
+  font-size: 2.2rem;
+  margin-bottom: 0.5rem;
+  background: linear-gradient(135deg, #ff5fa2, #ff9966);
+  -webkit-background-clip: text;
+  background-clip: text;
+  color: transparent;
+}
+
+.cartas-header p {
+  max-width: 640px;
+  margin: 0 auto 2.5rem;
+  font-size: 0.98rem;
+  color: #5a4a4a;
+}
+
+/* LISTA DE ENVELOPES – GRID */
+.cartas-envelopes-lista {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(230px, 1fr));
+  gap: 1.3rem 1.5rem;
+  margin-top: 1.4rem;
+}
+
+/* CARD DA CARTA */
+.carta-envelopinho {
+  position: relative;
+  overflow: hidden;
+  background: radial-gradient(
+      circle at top left,
+      rgba(255, 255, 255, 0.18),
+      transparent 60%
+    ),
+    radial-gradient(
+      circle at bottom right,
+      rgba(255, 183, 213, 0.22),
+      transparent 55%
+    );
+  border-radius: 18px;
+  padding: 1rem 1.25rem;
+  border: 1px solid rgba(255, 255, 255, 0.18);
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  gap: 0.4rem;
+  cursor: pointer;
+  text-align: left;
+  box-shadow: 0 12px 26px rgba(0, 0, 0, 0.35);
+  backdrop-filter: blur(14px);
+  transition: transform 0.22s ease, box-shadow 0.22s ease,
+    border-color 0.22s ease, background 0.22s ease;
+  animation: cartaEnter 0.45s ease-out both;
+}
+
+/* delays leves pra animação de entrada */
+.cartas-envelopes-lista .carta-envelopinho:nth-child(1) {
+  animation-delay: 0.02s;
+}
+.cartas-envelopes-lista .carta-envelopinho:nth-child(2) {
+  animation-delay: 0.06s;
+}
+.cartas-envelopes-lista .carta-envelopinho:nth-child(3) {
+  animation-delay: 0.1s;
+}
+.cartas-envelopes-lista .carta-envelopinho:nth-child(4) {
+  animation-delay: 0.14s;
+}
+
+@keyframes cartaEnter {
+  0% {
+    opacity: 0;
+    transform: translateY(18px) scale(0.97);
+  }
+  100% {
+    opacity: 1;
+    transform: translateY(0) scale(1);
+  }
+}
+
+/* brilho suave */
+.carta-envelopinho::before {
+  content: "";
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(
+    120deg,
+    rgba(255, 255, 255, 0.24),
+    transparent 40%,
+    transparent 60%,
+    rgba(255, 255, 255, 0.15)
+  );
+  opacity: 0;
+  transform: translateX(-40%);
+  transition: opacity 0.3s ease, transform 0.3s ease;
+  pointer-events: none;
+}
+
+.carta-envelopinho:hover::before {
+  opacity: 1;
+  transform: translateX(0);
+}
+
+.carta-envelopinho:hover {
+  transform: translateY(-4px) scale(1.01);
+  border-color: rgba(255, 180, 220, 0.95);
+  box-shadow: 0 18px 36px rgba(0, 0, 0, 0.5);
+}
+
+/* ÍCONE – envelope romântico */
+.carta-envelopinho-icone {
+  width: 60px;
+  height: 44px;
+  margin-bottom: 0.4rem;
+  position: relative;
+}
+
+.envelope-romantico {
+  width: 100%;
+  height: 100%;
+  border-radius: 12px;
+  background: linear-gradient(135deg, #ffb6d9, #ff7faf);
+  border: 2px solid rgba(255, 255, 255, 0.7);
+  position: relative;
+  box-shadow: 0 5px 14px rgba(255, 120, 170, 0.55);
+  overflow: hidden;
+  transition: transform 0.25s ease, box-shadow 0.25s ease;
+}
+
+/* flap do envelope */
+.envelope-romantico::before {
+  content: "";
+  position: absolute;
+  top: -4px;
+  left: 0;
+  width: 100%;
+  height: 60%;
+  background: linear-gradient(135deg, #ffd2e7, #ff9ec8);
+  clip-path: polygon(0 0, 50% 100%, 100% 0);
+}
+
+/* coração central */
+.envelope-coracao {
+  position: absolute;
+  left: 50%;
+  bottom: 6px;
+  transform: translateX(-50%);
+  font-size: 1.4rem;
+  text-shadow: 0 0 6px rgba(255, 255, 255, 0.7);
+}
+
+/* badge do número da carta */
+.carta-numero-badge {
+  position: absolute;
+  bottom: -4px;
+  right: -4px;
+  width: 22px;
+  height: 22px;
+  border-radius: 50%;
+  background: rgba(255, 255, 255, 0.96);
+  border: 1px solid rgba(255, 140, 190, 0.9);
+  color: #7c3751;
+  font-size: 0.75rem;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-weight: 600;
+  box-shadow: 0 3px 8px rgba(0, 0, 0, 0.25);
+}
+
+/* animação ícone */
+.carta-envelopinho:hover .envelope-romantico {
+  transform: translateY(-2px) scale(1.04);
+  box-shadow: 0 7px 18px rgba(255, 120, 170, 0.6);
+}
+
+/* textos */
+.carta-envelopinho-topo {
+  width: 100%;
+}
+
+.carta-envelopinho-titulo {
+  font-size: 1rem;
+  font-weight: 600;
+}
+
+.carta-envelopinho-legenda {
+  font-size: 0.82rem;
+  opacity: 0.85;
+}
+
+/* wrapper dos textos (título + legenda) */
+.carta-envelopinho-conteudo {
+  display: flex;
+  flex-direction: column;
+  gap: 0.15rem;
+  width: 100%;
+}
+
+/* ===========================
+   OVERLAY (igual lightbox)
+=========================== */
+.carta-overlay {
+  position: fixed;
+  inset: 0;
+  background: rgba(0, 0, 0, 0.78);
+  backdrop-filter: blur(6px);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  z-index: 999999;
+  animation: fadeInCarta 0.25s ease forwards;
+}
+
+@keyframes fadeInCarta {
+  from {
+    opacity: 0;
+  }
+  to {
+    opacity: 1;
+  }
+}
+
+/* CONTAINER DA FOLHA */
+.folha-wrapper {
+  position: relative;
+  width: 92%;
+  max-width: 820px;
+  border-radius: 22px;
+  padding: 1rem 1rem 1.2rem;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 0.75rem;
+  box-shadow: 0 15px 45px rgba(255, 100, 150, 0.35);
+  background: transparent;
+}
+
+/* FOLHA DE PAPEL */
+.folha-carta {
+  width: 100%;
+  min-height: 260px;
+  max-height: 70vh;
+  background: repeating-linear-gradient(
+    to bottom,
+    #fffaf4 0,
+    #fffaf4 24px,
+    #ffe2cf 25px
+  );
+  border-radius: 18px;
+  padding: 1.2rem 1.6rem 1.5rem;
+  box-shadow: 0 18px 35px rgba(0, 0, 0, 0.55),
+    0 0 0 1px rgba(255, 220, 200, 0.8);
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  overflow-y: auto;
+}
+
+/* slides */
+.slide-enter-right {
+  animation: slideFromRight 0.5s ease-out;
+}
+
+.slide-enter-left {
+  animation: slideFromLeft 0.5s ease-out;
+}
+
+@keyframes slideFromRight {
+  0% {
+    transform: translateY(120px) translateX(60px) rotate(3deg) scale(0.9);
+    opacity: 0;
+  }
+  50% {
+    transform: translateY(-10px) translateX(10px) rotate(-1deg) scale(1.03);
+    opacity: 1;
+  }
+  100% {
+    transform: translateY(0) translateX(0) rotate(0) scale(1);
+  }
+}
+
+@keyframes slideFromLeft {
+  0% {
+    transform: translateY(120px) translateX(-60px) rotate(-3deg) scale(0.9);
+    opacity: 0;
+  }
+  50% {
+    transform: translateY(-10px) translateX(-10px) rotate(1deg) scale(1.03);
+    opacity: 1;
+  }
+  100% {
+    transform: translateY(0) translateX(0) rotate(0) scale(1);
+  }
+}
+
+/* dobra da folha */
+.folha-carta::before {
+  content: "";
+  position: absolute;
+  top: 0;
+  right: 0;
+  border-top: 22px solid rgba(255, 225, 210, 0.85);
+  border-left: 22px solid transparent;
+}
+
+/* título e texto */
+.folha-cabecalho {
+  display: flex;
+  justify-content: space-between;
+  margin-bottom: 1rem;
+  font-size: 0.8rem;
+  color: #7b4a3a;
+}
+
+.folha-etiqueta {
+  padding: 0.25rem 0.7rem;
+  border-radius: 999px;
+  background: rgba(255, 216, 204, 0.9);
+  border: 1px solid rgba(184, 126, 96, 0.6);
+  text-transform: uppercase;
+  letter-spacing: 0.08em;
+  font-size: 0.75rem;
+}
+
+.folha-contador {
+  opacity: 0.8;
+}
+
+.folha-titulo {
+  font-size: 1.15rem;
+  margin-bottom: 0.8rem;
+  color: #4a2b2b;
+}
+
+.folha-texto {
+  font-size: 0.95rem;
+  line-height: 1.7;
+  color: #5a3434;
+}
+
+/* assinatura */
+.folha-assinatura {
+  margin-top: 1.4rem;
+  display: flex;
+  flex-direction: column;
+  gap: 0.15rem;
+  color: #6a3b3b;
+}
+
+/* cursor */
+.carta-cursor {
+  display: inline-block;
+  width: 7px;
+  height: 1.1em;
+  margin-left: 2px;
+  background: #5a3434;
+  animation: blinkCursor 0.9s steps(1) infinite;
+}
+
+@keyframes blinkCursor {
+  0%,
+  50% {
+    opacity: 1;
+  }
+  50.01%,
+  100% {
+    opacity: 0;
+  }
+}
+
+/* CONTROLES DO OVERLAY (botões Fechar / Próxima carta) */
+.carta-overlay-controles {
+  display: flex;
+  gap: 0.8rem;
+  margin-top: 0.3rem;
+}
+
+.carta-btn {
+  border-radius: 999px;
+  padding: 0.55rem 1.3rem;
+  font-size: 0.87rem;
+  border: none;
+  cursor: pointer;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 0.3rem;
+  transition: transform 0.16s ease, box-shadow 0.16s ease, background 0.16s ease,
+    color 0.16s ease;
+}
+
+.carta-btn-primario {
+  background: linear-gradient(135deg, #ff5fa2, #ff9966);
+  color: #fff;
+  box-shadow: 0 10px 22px rgba(0, 0, 0, 0.5);
+}
+
+.carta-btn-primario:hover {
+  transform: translateY(-1px);
+  box-shadow: 0 14px 28px rgba(0, 0, 0, 0.6);
+}
+
+.carta-btn-secundario {
+  background: rgba(10, 10, 10, 0.7);
+  color: #fce5ff;
+  border: 1px solid rgba(255, 255, 255, 0.18);
+}
+
+.carta-btn-secundario:hover {
+  transform: translateY(-1px);
+  background: rgba(10, 10, 10, 0.85);
+}
+
+/* dica embaixo dos botões */
+.carta-overlay-dica {
+  font-size: 0.8rem;
+  color: rgba(255, 255, 255, 0.7);
+  margin-top: 0.2rem;
+}
+
+/* ===========================
+   ASSINATURA ANIMADA
+=========================== */
+.assinatura-frase {
+  font-size: 1rem;
+  color: #6a3b3b;
+  margin-bottom: 6px;
+}
+
+.assinatura-linha {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+}
+
+.assinatura-desenhada {
+  font-family: "Dancing Script", "Segoe Script", cursive;
+  font-size: 1.6rem;
+  color: #4a2b2b;
+  white-space: nowrap;
+  overflow: hidden;
+  display: inline-block;
+  border-right: 2px solid #4a2b2b;
+}
+
+@keyframes escreverAssinatura {
+  from {
+    width: 0ch;
+  }
+  to {
+    width: 13ch;
+  }
+}
+
+@keyframes cursorPisca {
+  0%,
+  50% {
+    border-color: #4a2b2b;
+  }
+  50.01%,
+  100% {
+    border-color: transparent;
+  }
+}
+
+.assinatura-coracao {
+  font-size: 1.45rem;
+  color: #ff4f7d;
+  transform-origin: center;
+}
+
+@keyframes coracaoBatendo {
+  0% {
+    transform: scale(1);
+  }
+  20% {
+    transform: scale(1.25);
+  }
+  35% {
+    transform: scale(1);
+  }
+  60% {
+    transform: scale(1.2);
+  }
+  80% {
+    transform: scale(1);
+  }
+  100% {
+    transform: scale(1);
+  }
+}
+
+.assinatura-escondida {
+  opacity: 0;
+}
+
+.assinatura-mostrada {
+  opacity: 1;
+  transition: opacity 0.6s ease 0.3s;
+}
+
+.assinatura-mostrada .assinatura-desenhada {
+  animation: escreverAssinatura 3s steps(30) forwards,
+    cursorPisca 0.8s steps(1) infinite;
+}
+
+.assinatura-mostrada .assinatura-coracao {
+  animation: coracaoBatendo 1.4s infinite ease-in-out;
+}
+
+/* MOBILE */
+@media (max-width: 600px) {
+  .cartas-section {
+    padding-inline: 1.1rem;
+  }
+
+  .cartas-header h2 {
+    font-size: 1.9rem;
+  }
+
+  .cartas-envelopes-lista {
+    grid-template-columns: 1fr;
+    gap: 0.9rem;
+  }
+
+  /* card mais compacto: ícone à esquerda, textos à direita */
+  .carta-envelopinho {
+    max-width: 380px;
+    margin: 0 auto;
+    flex-direction: row;
+    align-items: center;
+    gap: 0.9rem;
+    padding: 0.85rem 1rem;
+    box-shadow: 0 10px 24px rgba(0, 0, 0, 0.32);
+  }
+
+  .carta-envelopinho-icone {
+    margin-bottom: 0;
+    flex-shrink: 0;
+  }
+
+  .carta-envelopinho-conteudo {
+    align-items: flex-start;
+  }
+
+  .folha-wrapper {
+    width: 96%;
+    padding: 0.5rem;
+  }
+
+  .folha-carta {
+    max-height: 75vh;
+    padding-inline: 1rem;
+  }
+
+  .carta-overlay-controles {
+    flex-direction: column;
+    width: 100%;
+  }
+
+  .carta-btn {
+    width: 100%;
+  }
+}
