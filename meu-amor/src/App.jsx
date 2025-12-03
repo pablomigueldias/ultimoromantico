@@ -7,7 +7,6 @@ import CartasParaVoce from "./components/CartasParaVoce";
 import LoveMusicPlayer from "./components/LoveMusicPlayer";
 import MensagemSecreta from "./components/MensagemSecreta";
 import CalendarioDoAmor from "./components/CalendarioDoAmor";
-import CartaDoAmor from "./components/CartaDoAmor";
 
 function App() {
   const musicPlayerRef = useRef(null);
@@ -42,8 +41,6 @@ function App() {
           <CartasParaVoce />
 
           <CalendarioDoAmor />
-
-          <CartaDoAmor />
 
           {/* Mensagem secreta com controle da música via callbacks */}
           <MensagemSecreta

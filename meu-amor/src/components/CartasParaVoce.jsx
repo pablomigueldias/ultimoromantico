@@ -5,27 +5,27 @@ import "./CartasParaVoce.css";
 const cartasIniciais = [
     {
         id: 1,
-        titulo: "Carta 01 — Só para você 💌",
+        titulo: "Tudo mais leve 💌",
         texto:
-            "Desde o dia em que você entrou na minha vida, tudo ficou mais leve, mais bonito e mais verdadeiro. Você é o meu lugar favorito no mundo.",
+            "Desde o dia em que você entrou na minha vida, tudo ficou mais leve, mais bonito e mais verdadeiro. Você é o meu lugar favorito no mundo. Você é a minha paz, a minha alegria e o meu cantinho seguro no meio do caos do mundo. Com você, tudo faz sentido.",
     },
     {
         id: 2,
-        titulo: "Carta 02 — Sobre nós ✨",
+        titulo: "O tempo voa ✨",
         texto:
-            "Eu amo como a gente ri de coisas bobas, como o tempo passa rápido quando estamos juntos, e como até o silêncio com você é confortável.",
+            "Eu amo como, quando estou com você, o tempo voa. A gente pisca e já virou noite, já virou manhã, já virou história. E a verdade é que eu queria que cada momento durasse só um pouquinho mais… porque com você eu nunca quero que acabe. ",
     },
     {
         id: 3,
-        titulo: "Carta 03 — Obrigado por existir 🌹",
+        titulo: "Obrigado por existir 🌹",
         texto:
-            "Obrigado por cada detalhe, cada mensagem, cada abraço apertado e cada olhar que diz mais do que mil palavras. Você é o meu melhor presente.",
+            "Obrigado por cada gesto, por cada cuidado, por cada riso e por cada silêncio compartilhado. Obrigado por existir do jeitinho que você é. Você transformou minha vida sem nem perceber, e hoje eu entendo que o maior presente que eu já ganhei… foi você",
     },
     {
         id: 4,
-        titulo: "Carta 04 — Promessa ❤️",
+        titulo: "Promessa ❤️",
         texto:
-            "Prometo te amar nos dias fáceis e principalmente nos dias difíceis. Caminhar do seu lado, segurar sua mão e ser sempre seu porto seguro.",
+            "Eu prometo estar com você quando tudo sorrir e quando tudo desmoronar. Prometo te amar nos dias quentes de alegria e nos dias frios de silêncio. Prometo ser seu porto seguro, seu descanso e sua coragem. Obrigado por me escolher todos os dias. te amar nos dias fáceis e principalmente nos dias difíceis. Caminhar do seu lado, segurar sua mão e ser sempre seu porto seguro.",
     },
 ];
 
@@ -197,9 +197,8 @@ export default function CartasParaVoce() {
             <div className="cartas-header">
                 <h2>Cartas para você ✉️</h2>
                 <p>
-                    Cada carta aqui é como se eu tivesse sentado, pegado uma folha de
-                    papel e escrito tudo o que eu sinto por você, com calma, linha por
-                    linha.
+                    Te amo meu amor com todo meu coração. Essas são algumas cartinhas que escrevi
+                    para você. Espero que goste! 💖
                 </p>
             </div>
 
@@ -224,7 +223,7 @@ export default function CartasParaVoce() {
                         </div>
 
                         <span className="carta-envelopinho-legenda">
-                            Toque para abrir essa lembrança
+                            Toque pra abrir a cartinha.
                         </span>
                     </button>
                 ))}
@@ -265,12 +264,12 @@ export default function CartasParaVoce() {
                                         }`}
                                 >
                                     <span className="assinatura-frase">
-                                        Com todo o meu amor,
+                                        Com todo amor,
                                     </span>
 
                                     <div className="assinatura-linha">
                                         <span className="assinatura-desenhada">
-                                            seu amorzinho
+                                            Seu Homi
                                         </span>
                                         <span className="assinatura-coracao">❤️</span>
                                     </div>
@@ -293,9 +292,7 @@ export default function CartasParaVoce() {
                             </div>
 
                             <p className="carta-overlay-dica">
-                                Dica: arraste para o lado no celular, use{" "}
-                                <strong>ESC</strong> para fechar, <strong>←</strong> e{" "}
-                                <strong>→</strong> para mudar de carta.
+                                Minha brabinha linda. 
                             </p>
                         </div>
                     </div>,

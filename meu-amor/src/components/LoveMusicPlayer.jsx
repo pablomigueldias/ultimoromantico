@@ -10,19 +10,24 @@ import "./LoveMusicPlayer.css";
 
 const playlist = [
     {
-        title: "A vida é boa com você",
-        artist: "Romantic Beats",
-        src: "/music/Kali Uchis - Moonlight (Official Lyric Video) - KALI UCHIS (youtube).mp3",
+        title: "Porque Eu Te Amo",
+        artist: "ANAVITÓRIA",
+        src: "/music/ANAVITÓRIA - Porque Eu Te Amo (Audio).mp3",
     },
     {
-        title: "Nosso Cantinho",
-        artist: "Soft Love",
-        src: "/music/Kali Uchis - Moonlight (Official Lyric Video) - KALI UCHIS (youtube).mp3",
+        title: "Pupila",
+        artist: "ANAVITÓRIA, Vitor Kley",
+        src: "/music/ANAVITÓRIA - Pupila ft. Vitor Kley _ LETRA.mp3",
     },
     {
-        title: "Para Sempre Nós",
-        artist: "Heart Piano",
-        src: "/music/Kali Uchis - Moonlight (Official Lyric Video) - KALI UCHIS (youtube).mp3",
+        title: "Meu Abrigo",
+        artist: "Melim",
+        src: "/music/Melim - Meu Abrigo.mp3",
+    },
+    {
+        title: "A Vida É Boa Com Você",
+        artist: "Bryan Behr",
+        src: "/music/Bryan Behr - A Vida É Boa Com Você.mp3",
     },
 ];
 
@@ -40,6 +45,9 @@ const LoveMusicPlayer = forwardRef(function LoveMusicPlayer(_, ref) {
 
     const [currentTime, setCurrentTime] = useState(0);
     const [duration, setDuration] = useState(0);
+
+    // controla se a próxima música deve tocar automaticamente
+    const autoPlayRef = useRef(false);
 
     const formatTime = (time) => {
         if (!time || isNaN(time)) return "0:00";
@@ -113,6 +121,35 @@ const LoveMusicPlayer = forwardRef(function LoveMusicPlayer(_, ref) {
         };
     }, [currentSong]);
 
+    // quando a música (currentSong) muda, decide se toca ou não
+    useEffect(() => {
+        const audio = audioRef.current;
+        if (!audio) return;
+
+        audio.volume = volume;
+        audio.currentTime = 0;
+
+        if (autoPlayRef.current) {
+            audio
+                .play()
+                .then(() => {
+                    if (audioContextRef.current?.state === "suspended") {
+                        audioContextRef.current.resume();
+                    }
+                    setIsPlaying(true);
+                })
+                .catch(() => {
+                    setIsPlaying(false);
+                });
+        } else {
+            audio.pause();
+            setIsPlaying(false);
+        }
+
+        // reseta a flag
+        autoPlayRef.current = false;
+    }, [currentSong, volume]);
+
     const togglePlay = () => {
         const audio = audioRef.current;
         if (!audio) return;
@@ -133,33 +170,22 @@ const LoveMusicPlayer = forwardRef(function LoveMusicPlayer(_, ref) {
         }
     };
 
-    const changeSong = (index) => {
-        const audio = audioRef.current;
-        if (!audio) return;
-
+    const changeSong = (index, autoPlay = false) => {
         setCurrentSong(index);
-        audio.src = playlist[index].src;
-        audio.load();
-        audio.volume = volume;
         setCurrentTime(0);
-
-        if (isPlaying) {
-            audio
-                .play()
-                .then(() => {
-                    if (audioContextRef.current?.state === "suspended") {
-                        audioContextRef.current.resume();
-                    }
-                })
-                .catch(() => { });
-        }
+        // se deve tocar automaticamente (ou se já estava tocando)
+        autoPlayRef.current = autoPlay;
     };
 
-    const nextSong = () =>
-        changeSong((currentSong + 1) % playlist.length);
+    const nextSong = (autoPlay = false) => {
+        const nextIndex = (currentSong + 1) % playlist.length;
+        changeSong(nextIndex, autoPlay);
+    };
 
-    const prevSong = () =>
-        changeSong((currentSong - 1 + playlist.length) % playlist.length);
+    const prevSong = () => {
+        const prevIndex = (currentSong - 1 + playlist.length) % playlist.length;
+        changeSong(prevIndex, isPlaying);
+    };
 
     const handleVolumeChange = (e) => {
         const value = Number(e.target.value);
@@ -209,7 +235,7 @@ const LoveMusicPlayer = forwardRef(function LoveMusicPlayer(_, ref) {
             <audio
                 ref={audioRef}
                 src={playlist[currentSong].src}
-                onEnded={nextSong}
+                onEnded={() => nextSong(true)} // terminou → vai pra próxima e já toca
             ></audio>
 
             {/* linha de cima */}
@@ -231,7 +257,8 @@ const LoveMusicPlayer = forwardRef(function LoveMusicPlayer(_, ref) {
                 <div className="controls">
                     <button onClick={prevSong}>⏮</button>
                     <button onClick={togglePlay}>{isPlaying ? "⏸" : "▶️"}</button>
-                    <button onClick={nextSong}>⏭</button>
+                    {/* se estava tocando, próxima também toca; se estava pausado, só troca */}
+                    <button onClick={() => nextSong(isPlaying)}>⏭</button>
                 </div>
 
                 <div className="volume">
@@ -279,7 +306,7 @@ const LoveMusicPlayer = forwardRef(function LoveMusicPlayer(_, ref) {
                         key={song.src}
                         className={`playlist-item ${index === currentSong ? "active" : ""
                             }`}
-                        onClick={() => changeSong(index)}
+                        onClick={() => changeSong(index, true)} // clicou → já toca
                     >
                         <span className="playlist-title">{song.title}</span>
                         <span className="playlist-artist">{song.artist}</span>

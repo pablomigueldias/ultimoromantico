@@ -5,8 +5,10 @@ function CabecalhoDeclaracao() {
     <header className="cabecalho">
       <h1>Oi Amor da Minha vida!</h1>
       <p>
-A minha brabinha, a melhor pessoa que já cruzou meu caminho.
-Quero guardar aqui nossos momentos e também o tempo que estamos juntos, pra nunca esquecer o quanto você mudou minha vida. 💘✨      </p>
+        Você foi, é e sempre será uma das melhores coisas que já me aconteceu.
+        Aqui quero guardar nossos momentos…
+        para que, sempre que você olhar, lembre do quanto mudou minha vida
+        e de como tudo ficou mais bonito depois de você. 💘✨      </p>
     </header>
   );
 }

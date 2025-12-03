@@ -2,10 +2,10 @@
 import { useState } from "react";
 import "./MensagemSecreta.css";
 
-const SECRET_QUESTION = "Qual meu apelido pra você?";
+const SECRET_QUESTION = "Como eu te chamo quando você fica brava até nos momentos de viadagi?";
 
 // 👉 Altere essas respostas para combinar com VOCÊ e com ela
-const SECRET_ANSWERS = ["princesa", "minha princesa", "amor", "meu amor"];
+const SECRET_ANSWERS = ["brabinha", "Brabinha"];
 
 export default function MensagemSecreta({ onVideoStart, onVideoEnd }) {
   const [answer, setAnswer] = useState("");
@@ -44,11 +44,11 @@ export default function MensagemSecreta({ onVideoStart, onVideoEnd }) {
         );
       } else if (newTries === 2) {
         setError(
-          "Olha... eu tô começando a ficar magoado heim 😂 pensa direitinho."
+          "Oia... ta facil."
         );
       } else {
         setError(
-          "Depois dessa tentativa você me deve, no mínimo, um beijo extra. 😤💋"
+          "Depois dessa tentativa você me deve 2 real no pix"
         );
       }
     }
@@ -81,7 +81,7 @@ export default function MensagemSecreta({ onVideoStart, onVideoEnd }) {
             {error && <p className="ms-error">{error}</p>}
 
             <p className="ms-tip">
-              Dica: escreve do jeitinho que você fala comigo no dia a dia 😌
+              Dica: Voce é minha _____ , Boa Noite minha _____
             </p>
           </>
         ) : (
@@ -111,10 +111,10 @@ export default function MensagemSecreta({ onVideoStart, onVideoEnd }) {
             {/* Mensagem de aniversário divertida */}
             <div className="birthday-message">
               <h2 className="birthday-title">
-                🎂 Parabéns, dona do meu coração e da minha paciência 😂 🎂
+                🎂 Parabéns, dona do meu coração 🎂
               </h2>
               <p className="birthday-text">
-                Hoje é oficialmente o dia mundial de aturar as suas frescuras
+                Hoje é oficialmente o dia mundial de aturar as suas brabezas
                 com prioridade máxima, aceitar seus surtos com carinho e ainda
                 te chamar de linda no final. Parabéns, você desbloqueou o modo
                 aniversário: tudo o que você pedir, eu penso com carinho… e
@@ -122,7 +122,7 @@ export default function MensagemSecreta({ onVideoStart, onVideoEnd }) {
               </p>
               <p className="birthday-text small">
                 Agora aproveita esse vídeo, porque depois vou cobrar beijo,
-                abraço, cafuné e, no mínimo, um pedaço de bolo bem caprichado.
+                abraço, dengo e, no mínimo, um pedaço de bolo bem caprichado.
                 💘
               </p>
             </div>
@@ -132,7 +132,7 @@ export default function MensagemSecreta({ onVideoStart, onVideoEnd }) {
               <div className="birthday-video-party-bg">
                 <span className="party-emoji">🎂</span>
                 <span className="party-emoji">🎉</span>
-                <span className="party-emoji">😂</span>
+                <span className="party-emoji">🎂</span>
                 <span className="party-emoji">💖</span>
               </div>
 

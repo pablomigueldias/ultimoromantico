@@ -1,43 +1,47 @@
 // src/components/CalendarioDoAmor.jsx
 import { useState } from "react";
 import "./CalendarioDoAmor.css";
+import foto25 from "../img/img25.jpg";
+import foto13 from "../img/img13.jpg";
+import foto16 from "../img/img16.jpg";
+import foto11 from "../img/img11.jpg";
 
 const MOMENTOS = [
     {
         id: "aniversario-dela",
-        data: "12/03",
+        data: "04/12",
         titulo: "Aniversário dela 🎂",
         tag: "Data favorita do ano",
         descricao:
-            "O dia que o mundo ficou oficialmente mais bonito, porque você chegou nele. Desde que te conheci, essa data ganhou um significado totalmente diferente pra mim.",
-        imagem: "/images/calendario/aniversario-dela.jpg", // troque pelo caminho real se tiver
+            "O dia que o mundo ficou oficialmente mais bonito, porque você chegou nele. Desde que te conheci e voce é o maior presente que eu poderia receber.",
+        imagem: foto25, 
     },
     {
         id: "primeiro-beijo",
-        data: "27/05",
+        data: "10/07",
         titulo: "Nosso primeiro beijo 💋",
-        tag: "Início oficial da bagunça",
+        tag: "COMEÇOU TUDO",
         descricao:
-            "Aquele beijo que mudou tudo. A partir dali, qualquer lugar com você começou a parecer o melhor lugar do mundo.",
-        imagem: "/images/calendario/primeiro-beijo.jpg",
+            "A gente não tem foto daquele momento, e eu nem lembro o dia exato… Mas eu lembro da cena. A gente na esquina, na frente do bar, esperando o Uber… e eu criando coragem até finalmente te beijar primeiro. SIM FOI EU QUE BEIJEI VOCÊ PRIMEIRO!🙄",
+        imagem: foto13,
     },
     {
         id: "aniversario-namoro",
-        data: "10/08",
+        data: "19/08",
         titulo: "Aniversário de namoro 💘",
-        tag: "Mais um ano sendo seu",
+        tag: "O maior acerto da minha vida",
         descricao:
-            "Cada ano ao seu lado parece passar voando, mas ao mesmo tempo dá aquela sensação de que a gente já se conhece há vidas.",
-        imagem: "/images/calendario/aniversario-namoro.jpg",
+            "Espero que eu comemore esse dia com você por muitos e muitos anos. eu sou muito grato por ter você ao meu lado.",
+        imagem: foto16,
     },
     {
         id: "surpresa",
         data: "??/??",
         titulo: "Surpresa em construção 🎁",
-        tag: "Vem coisa boa por aí",
+        tag: "Vem coisa aí",
         descricao:
-            "Tem coisa que eu ainda nem escrevi aqui, mas já tô planejando viver com você. Esse espaço é pra tudo que ainda vamos criar juntos.",
-        imagem: "/images/calendario/surpresa.jpg",
+            "Vou te bota no meu nome e te dar uma surpresa que você nunca mais vai esquecer. Só me aguarde.",
+        imagem: foto11,
     },
 ];
 
@@ -49,7 +53,7 @@ export default function CalendarioDoAmor() {
             <div className="calendario-amor-card">
                 <h2 className="calendario-titulo">Calendário do nosso amor 🗓️💖</h2>
                 <p className="calendario-subtitulo">
-                    Algumas datas que não são só números… são capítulos da nossa história.
+                    Alguns momentos que tivemos com datas totalmente erradas foi mal é meu jeitinho. vou precisar da sua ajuda pra lembrar direitinho a mulher das datas.
                 </p>
 
                 <div className="calendario-layout">
@@ -102,14 +106,13 @@ export default function CalendarioDoAmor() {
                                     }}
                                 />
                                 <div className="calendario-detalhe-imagem-overlay">
-                                    <span>✨ Nosso momento</span>
+                                    <span>✨ Minha vida</span>
                                 </div>
                             </div>
                         )}
 
                         <p className="calendario-detalhe-rodape">
-                            Clica nas outras datas ao lado pra reviver mais um pedacinho da
-                            nossa história. 💞
+                          💞
                         </p>
                     </div>
                 </div>
