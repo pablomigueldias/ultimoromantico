@@ -67,7 +67,7 @@ function GaleriaMomentos() {
         <section className="galeria">
             <h2>Nossos momentos 📸</h2>
 
-            
+            <p className="calendario-subtitulo">Clica na primeira foto </p>
 
             <div className="galeria-grid">
                 {momentos.map((momento, index) => (
