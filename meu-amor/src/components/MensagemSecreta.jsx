@@ -40,7 +40,7 @@ export default function MensagemSecreta({ onVideoStart, onVideoEnd }) {
 
       if (newTries === 1) {
         setError(
-          "Hmm... não é bem isso 😏 tenta lembrar como você fala comigo."
+          "Hmm... não é bem isso 😏"
         );
       } else if (newTries === 2) {
         setError(
